@@ -16,6 +16,9 @@ public:
 
     void printTables() const;
 
+   // void toXML(const QString &path);
+    void toXML();
+
 private:
     QSqlDatabase someDatabase;
 };
