@@ -2,14 +2,16 @@
 #include <iostream>
 #include <dbmanager.h>
 
+
 static const QString path = "/home/alexey/testbackup/1/apps/com.vkontakte.android/db/vk.db";
+
 
 int main(){
     DbManager db(path);
 
     if (db.isOpen()) {
         db.printTables();
-        //qDebug.noquote() << "maincpp";
+        db.toXML();
     }
     else {
         std::cout << "Database is not open.";
