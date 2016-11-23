@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="allow_buy_votes" value="false" />
+    <boolean name="usersex" value="false" />
+    <int name="money_transfers_max_amount" value="75000" />
+    <boolean name="debug_available" value="false" />
+    <string name="userphoto">https://pp.vk.me/c626424/v626424068/37fd9/WnYcXi90fWo.jpg</string>
+    <string name="xsrf_secret">MT6W5UCqzAcXzEU2wHSl</string>
+    <string name="userstatus"></string>
+    <boolean name="temp_redirect_state" value="false" />
+    <string name="support_url">https://m.vk.com/support?api_view=2ad36e83e28efae3d3482be153f297&amp;lang=ru</string>
+    <float name="custom_timezone" value="0.0" />
+    <boolean name="use_vigo" value="true" />
+    <boolean name="export_twitter_avail" value="false" />
+    <boolean name="money_transfers_available" value="true" />
+    <int name="ncode" value="765181640" />
+    <string name="sid">9f0801f8c0c171df944d77c6bc4b0b100a370e1e6576291c9cd47c880f8426667587933734e17db5e0595</string>
+    <int name="time_diff" value="0" />
+    <string name="secret">a4101e643cb90dce6a</string>
+    <int name="vigo_read_timeout" value="1000" />
+    <int name="usercountry" value="0" />
+    <long name="last_sent_apps" value="1479894304972" />
+    <int name="last_get_notify" value="1479895382" />
+    <int name="money_transfers_min_amount" value="100" />
+    <boolean name="export_facebook_avail" value="false" />
+    <int name="intro" value="0" />
+    <long name="feed_last_unload" value="1479896174966" />
+    <boolean name="money_transfers_can_send" value="true" />
+    <boolean name="gif_autoplay_available" value="true" />
+    <int name="vigo_connect_timeout" value="1000" />
+    <boolean name="video_autoplay_available" value="true" />
+    <string name="username">Михаил Тысячачертей</string>
+    <string name="msg_reply_hash">f8c1788ba2ba2ec57cbc34024593821c</string>
+    <int name="last_get_notify_app" value="1479895382" />
+    <int name="uid" value="393051068" />
+    <boolean name="newsfeed_is_top" value="true" />
+    <boolean name="start_from_interesting_pending" value="false" />
+    <string name="ads_stoplist">[]</string>
+</map>

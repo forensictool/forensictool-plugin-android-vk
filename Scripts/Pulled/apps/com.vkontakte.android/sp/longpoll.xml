@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <int name="pts" value="83" />
+    <boolean name="new_system" value="true" />
+    <int name="tmp_msg_id" value="-8" />
+</map>

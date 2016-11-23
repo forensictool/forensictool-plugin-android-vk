@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="preinstallRead" value="true" />
+    <string name="appVersion">1004</string>
+    <string name="referrer">utm_source=google-play&amp;utm_medium=organic</string>
+    <long name="lastStopTimeStampSec" value="1479896175" />
+    <long name="customEventsSkipped" value="0" />
+    <string name="mac">60:A4:4C:BD:9D:A9</string>
+    <string name="mrgsDeviceId">3f408126d0a5bbe39ff450b0acdf91cf</string>
+    <boolean name="referrerSent" value="true" />
+    <string name="appId">39905392329609327611</string>
+    <long name="eventTimestampBase" value="1479896127" />
+</map>
