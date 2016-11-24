@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
-<map>
-    <int name="num_new" value="0" />
-    <long name="auto_suggest_last_loaded" value="1479895385477" />
-    <boolean name="readFromCompat" value="false" />
-    <int name="num_updates" value="0" />
-    <string name="base_url"></string>
-</map>
