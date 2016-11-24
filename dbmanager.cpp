@@ -32,38 +32,82 @@ DbManager::~DbManager()
 }
 
 
-void DbManager::printTables() const
+//get a vector of tables
+QVector<QString> DbManager::getTables() const
 {
-    qDebug() << "Tables:\n";
-
     //tables vector
-    QVector<QString> tables;
+    QVector<QString> tablesVector;
     //get tables vector
     QSqlQuery query ("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name");
     while (query.next()) {
-        tables.push_back(query.value(0).toString());
-        qDebug().noquote() << query.value(0).toString();
-        qDebug().noquote() << tables;
+        tablesVector.push_back(query.value(0).toString());
     }
-    int i,j;
-    QString sql;
-    QSqlQuery queryFields;
+    return tablesVector;
+}
+
+
+//get a vector of table fields
+QVector<QString> DbManager::getTableFeilds(const QString &tableName) const
+{
+    int j;
+    QString sql; //SQL code used for creating a table
+    QSqlQuery querySqlFromSqlMaster; //query to get the SQL code//get a vector of tables
+    QVector<QString> fieldsVector; //field names vector
+    QString fieldName, firstIndex, lastIndex; //first and last indexes of field name
+        querySqlFromSqlMaster.exec("SELECT sql FROM sqlite_master WHERE name='" + tableName + "'");
+        while(querySqlFromSqlMaster.next()) {
+            fieldName = "";
+            sql = querySqlFromSqlMaster.value(0).toString();
+            firstIndex = sql.indexOf("(")+1;
+            lastIndex = sql.indexOf(" ", firstIndex);
+            //getting the field names from the sql variable
+            //*****************************ДОДЕЛАТЬ ЗДЕСЬ. БЕРЕТСЯ ТОЛЬКО ПЕРВОЕ ПОЛЕ**************************************
+            for (j=firstIndex; j<lastIndex; j++){
+                fieldName.append(sql[j]);
+            }
+            fieldsVector.push_back(fieldName);
+            qDebug() << sql;
+            qDebug() << fieldName;
+        }
+     return fieldsVector;
+}
+
+
+void DbManager::printTables() const
+{
+    qDebug() << "Tables:\n";
+    QSqlQuery queryTablesFromSqlmaster ("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name");
+    while (queryTablesFromSqlmaster.next()) {
+        qDebug().noquote() << queryTablesFromSqlmaster.value(0).toString();
+    }
+
+    //**********************************test************************************
+    QVector<QString> tablesVector = DbManager::getTables();
+    qDebug().noquote() << tablesVector;
+    const QString messages = "messages";
+    QVector<QString> fieldsVector = DbManager::getTableFeilds(messages);
+    qDebug().noquote() << fieldsVector;
+
+    /*int i,j;
+    QString sql = "atat";
+    QSqlQuery querySqlFromSqlMaster;
     QVector<QString> fields;
-    for (i=0; i<=tables.length(); i++) {
-        queryFields.exec("SELECT sql FROM sqlite_master WHERE name='" + tables[i] + "'");
-        while(queryFields.next()) {
-            sql = queryFields.value(0).toString();
+    for (i=0; i<tablesVector.length(); i++) {
+        querySqlFromSqlMaster.exec("SELECT sql FROM sqlite_master WHERE name='" + tablesVector[i] + "'");
+        while(querySqlFromSqlMaster.next()) {
+            sql = querySqlFromSqlMaster.value(0).toString();
+            qDebug() << sql;
         }
-        for (j=sql.indexOf("(")+1; sql[j]!=' '; j++) {
-            tables[i].append(sql[j]);
-        }
-    }
-    qDebug() << sql;
+        /*for (j=sql.indexOf("(")+1; sql[j]!=' '; j++) {
+            tablesVector[i].append(sql[j]);
+        }*/
+    //}*/
+    //qDebug() << sql;
    // qDebug() << tables;
 
-    QVector<QString> test;
+    /*QVector<QString> test;
     test.append("dad");
-    qDebug() << test[0];
+    qDebug() << test[0];*/
 
 
     //select sql from sqlite_master where name = 'messages'
@@ -86,6 +130,7 @@ void DbManager::toXML()
     //field names
     QVector<QString> fields;
     QFile file ("output.xml");
+
     if (!file.open(QIODevice::WriteOnly)) {
         qDebug() << "Error opening file";
         }
@@ -99,11 +144,13 @@ void DbManager::toXML()
             xmlWriter.writeStartElement(queryTables.value(0).toString());
             xmlWriter.writeEndElement();
         }
+
         QSqlQuery queryFields("SELECT sql FROM sqlite_master WHERE name='" + fields[0] + "'");
         QString sql;
-        while(queryFields.next()) {
+        /*while(queryFields.next()) {
             sql = queryFields.value(0).toString();
-        }
+           // qDebug().noquote() << sql;
+        }*/
     //select sql from sqlite_master where name = 'messages'
     //CREATE TABLE `messages` (mid int unique, peer int not null, sender int not null, text text, time int not null, attachments blob, fwd blob, extras text, flags int not null, random_id int)
 

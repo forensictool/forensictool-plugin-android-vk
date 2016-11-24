@@ -11,7 +11,7 @@ int main(){
 
     if (db.isOpen()) {
         db.printTables();
-        db.toXML();
+       // db.toXML();
     }
     else {
         std::cout << "Database is not open.";
