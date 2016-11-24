@@ -5,8 +5,7 @@ adbState=`adb get-state`
 if [[ "$adbState" = "device" ]]
 then
 appList=`adb shell pm list packages -f > appList.txt`  # Все установленные приложения на смартфоне
-echo "Введите искомое приложение: "
-	read neededApp
+neededApp="vkontakte"
 grepInfo=`grep "$neededApp" appList.txt` # Поиск нужного приложения
 if [[ "$grepInfo" != "" ]]
 then 
