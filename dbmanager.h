@@ -17,17 +17,10 @@ public:
 
     void printTables() const;
 
-    //get a vector of tables
-    QVector<QString> getTables() const;
-
-    //get a vector of table fields
-    QVector<QString> getTableFeilds(const QString &tableName) const;
-
-   // void toXML(const QString &path);
     void toXML();
 
 private:
-    QSqlDatabase someDatabase;
+    QSqlDatabase db;
 };
 
 #endif // DBMANAGER
