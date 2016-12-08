@@ -56,8 +56,8 @@ void DbManager::toXML()
     QSqlRecord record;
     QSqlQuery query;
     int numOfFields;
-    QXmlStreamWriter xmlWriter;    
-    QDir::setCurrent("/home/alexey/QtProjects/databaseproject0/XMLoutput/");
+    QXmlStreamWriter xmlWriter;
+    //QDir::setCurrent("/home/alexey/QtProjects/databaseproject0/XMLoutput/");
     QFile file ("output.xml");
     if (!file.open(QIODevice::WriteOnly)) {
         qDebug() << "Error opening file";

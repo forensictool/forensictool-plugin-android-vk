@@ -1,5 +1,6 @@
 databaseproject0
 databaseproject0.pro.user
 *.o
+/Scripts/Pulled/*
 /XMLoutput/*
 Makefile
