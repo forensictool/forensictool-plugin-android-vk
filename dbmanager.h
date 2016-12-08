@@ -2,7 +2,6 @@
 #define DBMANAGER
 
 #include <QSqlDatabase>
-#include <QVector>
 
 class DbManager
 {
@@ -15,7 +14,7 @@ public:
 
     bool isOpen() const;
 
-    void printTables() const;
+    void printTables();
 
     void toXML();
 

@@ -1,4 +1,5 @@
 databaseproject0
 databaseproject0.pro.user
 *.o
+/XMLoutput/*
 Makefile

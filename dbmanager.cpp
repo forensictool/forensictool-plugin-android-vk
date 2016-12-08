@@ -33,7 +33,7 @@ DbManager::~DbManager()
 }
 
 
-void DbManager::printTables() const
+void DbManager::printTables()
 {
     QStringList tables = db.tables(QSql::Tables);
     int i;
@@ -57,7 +57,7 @@ void DbManager::toXML()
     QSqlQuery query;
     int numOfFields;
     QXmlStreamWriter xmlWriter;    
-    QDir::setCurrent("/home/alexey/QtProjects/databaseproject0/");
+    QDir::setCurrent("/home/alexey/QtProjects/databaseproject0/XMLoutput/");
     QFile file ("output.xml");
     if (!file.open(QIODevice::WriteOnly)) {
         qDebug() << "Error opening file";
@@ -75,8 +75,9 @@ void DbManager::toXML()
                 record = db.record(tables[i]);
                 numOfFields = record.count();
                 for (k=0; k<numOfFields; k++) {
+                    //BLOB into base64
                     if (QString(query.value(k).typeName()) == "QByteArray") {
-                        //**********************************BLOB НЕ ПИШЕТСЯ*********************
+                        xmlWriter.writeAttribute(record.fieldName(k), (query.value(k).toByteArray()).toBase64());
                     }
                     else {
                         xmlWriter.writeAttribute(record.fieldName(k), query.value(k).toString());
